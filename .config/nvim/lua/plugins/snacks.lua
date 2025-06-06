@@ -32,6 +32,9 @@ local exclude = {
 	"test-results",
 	"test-results/**",
 	"**/*.sef.json",
+	"**/documentation",
+	"**/documentation/**",
+	"**/*.class",
 }
 
 -- https://github.com/folke/snacks.nvim
