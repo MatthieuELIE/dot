@@ -1,0 +1,35 @@
+# Fonts
+font-family = "JetBrainsMono Nerd Font Mono"
+font-feature = -feat
+font-size = 14
+font-thicken = true
+
+# Theme
+background-blur = true
+background-opacity = 0.6
+cursor-color = #f5e0dc
+cursor-style = block
+cursor-text = #1e1e2e
+theme = catppuccin-mocha
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Window
+title = " "
+window-padding-x = 0
+window-padding-y = 0
+window-title-font-family = "JetBrainsMono Nerd Font Mono"
+
+# Other
+unfocused-split-opacity = 0.2
+copy-on-select = false
+shell-integration = zsh
+
+# Mac OS
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+# Update
+auto-update = check
+auto-update-channel = stable
