@@ -14,10 +14,12 @@ return {
 		opts = {
 			flavour = "mocha",
 			transparent_background = true,
+			float = {
+				transparent = true,
+			},
 			integrations = {
 				telescope = {
 					enabled = true,
-					style = "nvchad",
 				},
 				dropbar = {
 					enabled = true,

@@ -4,10 +4,15 @@
 vim.g.snacks_animate = false
 
 -- Use spaces instead of tabs
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 -- Size of an indent
 vim.opt.shiftwidth = 4
 
 -- Number of spaces tabs count for
 vim.opt.tabstop = 4
+
+-- Syntax highlighting for fenced code blocks in markdown
+vim.g.markdown_fenced_languages = {
+	"ts=typescript",
+}
