@@ -2,7 +2,7 @@
 return {
 	{
 		source = {
-			File = "/home/thales/.config/wezterm/kitty.jpg",
+			File = "/Users/" .. os.getenv("USER") .. "/.config/wezterm/kitty.jpg",
 		},
 		width = "100%",
 		repeat_x = "NoRepeat",

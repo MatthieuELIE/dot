@@ -5,10 +5,8 @@ local keys = require("keys")
 local background = require("background")
 
 -- This will hold the configuration.
-local config = wezterm.config_builder()
-
 -- This is where you actually apply your config choices
-config = {
+local config = {
 	-- https://wezterm.org/config/lua/config/index.html
 	animation_fps = 1,
 	automatically_reload_config = false,
@@ -16,7 +14,8 @@ config = {
 	cursor_blink_ease_in = "Constant",
 	cursor_blink_ease_out = "Constant",
 	font = wezterm.font("JetBrainsMono Nerd Font"),
-	front_end = "Software",
+	font_size = 13,
+	front_end = "WebGpu",
 	harfbuzz_features = {
 		"calt=0",
 		"clig=0",
@@ -39,6 +38,7 @@ config = {
 		bottom = 0,
 		left = 0,
 	},
+	webgpu_power_preference = "HighPerformance",
 	background = background,
 }
 
