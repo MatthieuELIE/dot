@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
 -- https://wezterm.org/config/lua/keyassignment/index.html
-return {
+local keys = {
 	{
 		-- Activate previous tab
 		key = "[",
@@ -45,3 +45,14 @@ return {
 		end),
 	},
 }
+
+for i = 1, 8 do
+	-- ALT + number to move to that position
+	table.insert(keys, {
+		key = tostring(i),
+		mods = "ALT",
+		action = wezterm.action.ActivateTab(i - 1),
+	})
+end
+
+return keys
