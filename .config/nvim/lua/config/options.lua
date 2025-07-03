@@ -4,7 +4,7 @@
 vim.g.snacks_animate = false
 
 -- Use spaces instead of tabs
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 -- Size of an indent
 vim.opt.shiftwidth = 4
