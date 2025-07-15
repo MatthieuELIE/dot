@@ -18,8 +18,9 @@ return {
 				markdown = { "prettier" },
 				sh = { "shfmt" },
 				-- https://github.com/pamoller/xmlformatter
-				xslt = {},
-				xml = {},
+				-- xslt = {},
+				-- xml = {},
+				java = { "jdlts" },
 			},
 
 			formatters = {

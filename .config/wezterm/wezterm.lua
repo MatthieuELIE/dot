@@ -14,13 +14,14 @@ local config = {
 	cursor_blink_ease_in = "Constant",
 	cursor_blink_ease_out = "Constant",
 	font = wezterm.font("JetBrainsMono Nerd Font"),
-	font_size = 13,
-	front_end = "WebGpu",
-	harfbuzz_features = {
-		"calt=0",
-		"clig=0",
-		"liga=0",
-	},
+	font_size = 12.5,
+	-- front_end = "WebGpu",
+	front_end = "Software",
+	-- harfbuzz_features = {
+	-- 	"calt=0",
+	-- 	"clig=0",
+	-- 	"liga=0",
+	-- },
 	hide_tab_bar_if_only_one_tab = true,
 	hyperlink_rules = {},
 	keys = keys,
@@ -29,7 +30,7 @@ local config = {
 	show_new_tab_button_in_tab_bar = false,
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = false,
-	window_background_opacity = 1,
+	-- window_background_opacity = 1,
 	-- window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
 	window_padding = {
@@ -38,7 +39,7 @@ local config = {
 		bottom = 0,
 		left = 0,
 	},
-	webgpu_power_preference = "HighPerformance",
+	-- webgpu_power_preference = "HighPerformance",
 	background = background,
 }
 
