@@ -20,6 +20,7 @@ return {
 				-- https://github.com/pamoller/xmlformatter
 				-- xslt = {},
 				-- xml = {},
+				java = { "jdlts" },
 			},
 
 			formatters = {
