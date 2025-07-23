@@ -25,6 +25,11 @@ local config = {
 	hide_tab_bar_if_only_one_tab = true,
 	hyperlink_rules = {},
 	keys = keys,
+	leader = {
+		key = "Space",
+		mods = "SHIFT",
+		timeout_milliseconds = 500,
+	},
 	max_fps = 60,
 	scrollback_lines = 1000,
 	show_new_tab_button_in_tab_bar = false,
