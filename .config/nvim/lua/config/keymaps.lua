@@ -47,10 +47,3 @@ vim.keymap.set("v", "p", '"_dP', { noremap = true, silent = true })
 
 -- Replace word under cursor
 vim.keymap.set("n", "<leader>j", "*``cgn", { noremap = true, silent = true, desc = "Replace word under cursor" })
-
-vim.keymap.set("n", "<Left>", "<c-w>h")
-vim.keymap.set("n", "<Right>", "<c-w>l")
-
-vim.keymap.set("n", "<leader>gS", function()
-	require("telescope").extensions.advanced_git_search.search_log_content()
-end, { desc = "Git Log: Search commit content" })
