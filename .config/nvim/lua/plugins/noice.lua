@@ -1,3 +1,4 @@
+-- https://github.com/folke/noice.nvim?tab=readme-ov-file#-noice-nice-noise-notice
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
@@ -9,11 +10,10 @@ return {
 		presets = {
 			lsp_doc_border = true,
 		},
-		lsp = {
-			hover = {
-				opts = {
-					border = "rounded",
-				},
+		documentation = {
+			view = "hover",
+			opts = {
+				border = "rounded",
 			},
 		},
 	},

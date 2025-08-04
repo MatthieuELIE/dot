@@ -24,10 +24,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true })
 
--- Increment/decrement numbers
-vim.keymap.set("n", "<leader>+", "<C-a>", { noremap = true, silent = true, desc = "Increment" }) -- increment
-vim.keymap.set("n", "<leader>-", "<C-x>", { noremap = true, silent = true, desc = "Decrement" }) -- decrement
-
 -- Press jk fast to exit insert mode
 vim.keymap.set("i", "jj", "<ESC>", { noremap = true, silent = true })
 vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true })
