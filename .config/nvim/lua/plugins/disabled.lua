@@ -1,5 +1,5 @@
 return {
-	-- https://github.com/gbprod/yanky.nvim?tab=readme-ov-file#-yankynvim
+	-- https://github.com/gbprod/yanky.nvim
 	{
 		"folke/yanky.nvim",
 		enabled = false,
