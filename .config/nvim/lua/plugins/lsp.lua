@@ -7,7 +7,7 @@ return {
 			-- disable a keymap
 			keys[#keys + 1] = { "K", false }
 			-- add / change a keymap
-			keys[#keys + 1] = { "<leader>K", vim.lsp.buf.hover, desc = "Hover" }
+			keys[#keys + 1] = { "<leader>K", require("noice.lsp").hover, desc = "Hover" }
 		end,
 	},
 	{
