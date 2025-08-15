@@ -1,4 +1,4 @@
--- https://github.com/folke/noice.nvim?tab=readme-ov-file#-noice-nice-noise-notice
+-- https://github.com/folke/noice.nvim
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
@@ -9,14 +9,21 @@ return {
 	opts = {
 		presets = {
 			lsp_doc_border = true,
+			command_palette = false,
+			bottom_search = true,
+		},
+		cmdline = {
+			view = "cmdline",
+		},
+		messages = {
+			view = "mini",
 		},
 		lsp = {
 			hover = {
-				enabled = true,
 				opts = {
 					border = {
 						style = "rounded",
-						padding = { 0, 0, 0, 0 },
+						padding = { 0, 1, 0, 1 },
 					},
 				},
 			},
@@ -31,6 +38,12 @@ return {
 				opts = {
 					skip = true,
 				},
+			},
+			{
+				filter = {
+					event = "notify",
+				},
+				view = "mini",
 			},
 		},
 	},
