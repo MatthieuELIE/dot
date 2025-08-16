@@ -1,3 +1,5 @@
+-- lualine.nvim statusline configuration using Catppuccin theme
+-- GitHub: https://github.com/nvim-lualine/lualine.nvim
 return {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
@@ -30,11 +32,13 @@ return {
 			},
 			lualine_c = {
 				{
+					-- Show pretty file path using LazyVim util function
 					LazyVim.lualine.pretty_path(),
 				},
 			},
 			lualine_x = {
 				{
+					-- Show Noice command status if available
 					function()
 						---@diagnostic disable-next-line: undefined-field
 						return require("noice").api.status.command.get()
@@ -44,12 +48,11 @@ return {
 						return package.loaded["noice"] and require("noice").api.status.command.has()
 					end,
 					color = function()
-						return {
-							fg = Snacks.util.color("Statement"),
-						}
+						return { fg = Snacks.util.color("Statement") }
 					end,
 				},
 				{
+					-- Show Noice mode status if available
 					function()
 						---@diagnostic disable-next-line: undefined-field
 						return require("noice").api.status.mode.get()
@@ -59,19 +62,14 @@ return {
 						return package.loaded["noice"] and require("noice").api.status.mode.has()
 					end,
 					color = function()
-						return {
-							fg = Snacks.util.color("Constant"),
-						}
+						return { fg = Snacks.util.color("Constant") }
 					end,
 				},
 				{
 					"filetype",
 					icon_only = false,
 					separator = "",
-					padding = {
-						left = 0,
-						right = 1,
-					},
+					padding = { left = 0, right = 1 },
 				},
 			},
 		},
