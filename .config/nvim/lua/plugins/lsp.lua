@@ -10,8 +10,8 @@ return {
 			keys[#keys + 1] = { "<leader>K", require("noice.lsp").hover, desc = "Hover" }
 		end,
 	},
+	-- LSP server configurations
 	{
-		-- LSP server configurations
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
