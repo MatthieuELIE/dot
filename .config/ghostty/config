@@ -1,7 +1,7 @@
 # Fonts
 font-family = "JetBrainsMono Nerd Font Mono"
 font-feature = -feat
-font-size = 14
+font-size = 16
 font-thicken = true
 
 # Theme
@@ -10,16 +10,17 @@ background-opacity = 0.9
 cursor-color = #f5e0dc
 cursor-style = block
 cursor-text = #1e1e2e
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 
 # Mouse
 mouse-hide-while-typing = true
 
 # Window
 title = " "
+window-title-font-family = "JetBrainsMono Nerd Font Mono"
 window-padding-x = 0
 window-padding-y = 0
-window-title-font-family = "JetBrainsMono Nerd Font Mono"
+window-padding-balance = true
 
 # Other
 unfocused-split-opacity = 0.2

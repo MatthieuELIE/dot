@@ -1,5 +1,16 @@
--- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#default
-local defaultLayout = {
+--  Snacks.nvim Configuration
+--  https://github.com/folke/snacks.nvim
+
+-- Shared Layouts
+local dropdownLayout = {
+	preview = false,
+	preset = "dropdown",
+	layout = {
+		height = 0.4,
+	},
+}
+
+local horizontalLayout = {
 	layout = {
 		box = "horizontal",
 		width = 0.8,
@@ -12,19 +23,20 @@ local defaultLayout = {
 			{ win = "input", height = 1, border = "bottom" },
 			{ win = "list", border = "none" },
 		},
-		{ win = "preview", title = "{preview}", border = "rounded", width = 0.7 },
+		{ win = "preview", title = "{preview}", border = "rounded", width = 0.6 },
 	},
 }
 
+-- Shared Exclude Patterns
 local exclude = {
 	".git",
 	".git/**",
 	".vscode",
 	".vscode/**",
-	"dist",
-	"dist/**",
 	"node_modules",
 	"node_modules/**",
+	"dist",
+	"dist/**",
 	"logs",
 	"logs/**",
 	"playwright-report",
@@ -35,75 +47,107 @@ local exclude = {
 	"**/documentation",
 	"**/documentation/**",
 	"**/*.class",
+	"**/*.css",
+	"**/weasyprint_input",
 }
 
--- https://github.com/folke/snacks.nvim
+-- Plugin Setup
 return {
 	{
 		"folke/snacks.nvim",
 		opts = {
-			-- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#-picker
+			notifier = {
+				level = vim.log.levels.INFO,
+				icons = {
+					error = " ",
+					warn = " ",
+					info = " ",
+				},
+			},
 			picker = {
-				hidden = true, -- for hidden files
-				ignored = true, -- for .gitignore files
-				exclude = {
-					".git",
-					".git/**",
-					".vscode",
-					".vscode/**",
-					"logs",
-					"logs/**",
-					"playwright-report",
-					"playwright-report/**",
-					"test-results",
-					"test-results/**",
-				},
+				-- Global settings
+				hidden = true, -- include hidden files
+				ignored = true, -- respect .gitignore
+				exclude = exclude,
 				layout = {
-					cycle = false,
+					cycle = false, -- disable cycling layouts
 				},
+
 				formatters = {
 					file = {
 						filename_first = true,
 						truncate = 60,
 					},
 				},
+
+				-- Source-specific settings
 				sources = {
-					-- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#explorer
+
+					-- Buffers picker
+					buffers = {
+						layout = dropdownLayout,
+					},
+
+					-- File Explorer
 					explorer = {
 						auto_close = true,
 					},
-					-- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#files
+
+					-- Files picker
 					files = {
-						hidden = true, -- for hidden files
-						ignored = true, -- for .gitignore files
+						hidden = true,
+						ignored = true,
 						exclude = exclude,
-						layout = {
-							preview = false,
-							-- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#select-1
-							preset = "select",
-						},
+						layout = dropdownLayout,
 					},
-					-- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#grep
+
+					-- Recent files picker
+					recent = {
+						hidden = true,
+						ignored = true,
+						exclude = exclude,
+						layout = dropdownLayout,
+					},
+
+					-- Git-related pickers
+					git_diff = { layout = horizontalLayout },
+					git_log = { layout = horizontalLayout },
+					git_log_line = { layout = horizontalLayout },
+					git_status = { layout = horizontalLayout },
+
+					-- Grep / Search
 					grep = {
-						hidden = true, -- for hidden files
-						ignored = true, -- for .gitignore files
+						hidden = true,
+						ignored = true,
 						exclude = exclude,
-						layout = defaultLayout,
-					},
-					-- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#git_diff
-					git_diff = {
-						layout = defaultLayout,
-					},
-					-- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#git_log_line
-					git_log_line = {
-						layout = defaultLayout,
+						layout = horizontalLayout,
 					},
 				},
 			},
 		},
+
+		-- Snacks Keymaps
 		keys = {
-			{ "<leader>/", LazyVim.pick("grep", { root = false }), desc = "Grep" },
-			{ "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files" },
+			-- Disable Snacks default
+			{ "<leader>/", false },
+			{ "<leader>,", false },
+			{ "<leader><leader>", false },
+			-- New Snacks Keymaps
+			{ "<leader>bd", "<Cmd>:%bd<CR>", desc = "Delete all buffers" },
+			{
+				"<leader>E",
+				function()
+					Snacks.explorer({ cwd = LazyVim.root() })
+				end,
+				desc = "Explorer Snacks (root dir)",
+			},
+			{
+				"<leader>e",
+				function()
+					Snacks.explorer()
+				end,
+				desc = "Explorer Snacks (cwd)",
+			},
 		},
 	},
 }

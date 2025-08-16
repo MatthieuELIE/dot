@@ -1,24 +1,19 @@
+local noiceLsp = require("noice.lsp")
+-- Neovim LSP configuration and custom keymaps
+-- GitHub: https://github.com/neovim/nvim-lspconfig
 return {
-	-- LSP keymaps
+	-- LSP server setup configurations
 	{
-		"neovim/nvim-lspconfig",
-		opts = function()
-			local keys = require("lazyvim.plugins.lsp.keymaps").get()
-			-- disable a keymap
-			keys[#keys + 1] = { "K", false }
-			-- add / change a keymap
-			keys[#keys + 1] = { "<leader>K", require("noice.lsp").hover, desc = "Hover" }
-		end,
-	},
-	{
-		-- LSP server configurations
 		"neovim/nvim-lspconfig",
 		opts = {
+			inlay_hints = {
+				enabled = false,
+			},
 			servers = {
-				denols = {
-					init_options = {
-						enable = true,
-						lint = true,
+				["*"] = {
+					keys = {
+						{ "K", false },
+						{ "<leader>K", noiceLsp.hover, desc = "Hover" },
 					},
 				},
 			},
