@@ -2,7 +2,15 @@
 --  https://github.com/folke/snacks.nvim
 
 -- Shared Layouts
-local defaultLayout = {
+local dropdownLayout = {
+	preview = false,
+	preset = "dropdown",
+	layout = {
+		height = 0.4,
+	},
+}
+
+local horizontalLayout = {
 	layout = {
 		box = "horizontal",
 		width = 0.8,
@@ -62,6 +70,10 @@ return {
 				},
 				-- Source-specific settings
 				sources = {
+					-- Buffers picker
+					buffers = {
+						layout = dropdownLayout,
+					},
 					-- File Explorer
 					explorer = {
 						auto_close = true,
@@ -71,26 +83,20 @@ return {
 						hidden = true,
 						ignored = true,
 						exclude = exclude,
-						layout = {
-							preview = false,
-							preset = "dropdown",
-							layout = {
-								height = 0.4,
-							},
-						},
+						layout = dropdownLayout,
 					},
+					-- Git-related pickers
+					git_diff = { layout = horizontalLayout },
+					git_log = { layout = horizontalLayout },
+					git_log_line = { layout = horizontalLayout },
+					git_status = { layout = horizontalLayout },
 					-- Grep / Search
 					grep = {
 						hidden = true,
 						ignored = true,
 						exclude = exclude,
-						layout = defaultLayout,
+						layout = horizontalLayout,
 					},
-					-- Git-related pickers
-					git_diff = { layout = defaultLayout },
-					git_status = { layout = defaultLayout },
-					git_log = { layout = defaultLayout },
-					git_log_line = { layout = defaultLayout },
 				},
 			},
 		},
