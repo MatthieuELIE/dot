@@ -18,12 +18,12 @@ return {
 		opts = {
 			servers = {
 				-- Setup for denols LSP server with init options
-				denols = {
-					init_options = {
-						enable = true,
-						lint = true,
-					},
-				},
+				-- denols = {
+				-- 	init_options = {
+				-- 		enable = true,
+				-- 		lint = true,
+				-- 	},
+				-- },
 			},
 		},
 	},

@@ -113,6 +113,7 @@ return {
 				end,
 				desc = "Buffers",
 			},
+			{ "<leader>bd", "<Cmd>:%bd<CR>", desc = "Delete all buffers" },
 		},
 	},
 }

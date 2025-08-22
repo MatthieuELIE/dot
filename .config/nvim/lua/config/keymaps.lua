@@ -17,7 +17,7 @@ vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true, desc
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Prev Buffer" })
 
 -- Jump to the exact position of the last change in the current buffer
-vim.keymap.set("n", "M", "`.", { desc = "Jump to exact last change" })
+vim.keymap.set("n", "M", "`.zz", { desc = "Jump to exact last change" })
 
 -- Jump to the cursor position when last leaving the buffer (`0 mark)
 vim.keymap.set("n", "<C-m>", "`0", { desc = "Jump to last cursor position on buffer exit" })
