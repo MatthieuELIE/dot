@@ -14,6 +14,7 @@ return {
 			typescript = { "prettier" },
 			lua = { "stylua" },
 			css = { "prettier" },
+			scss = { "prettier" },
 			html = { "prettier" },
 			json = { "prettier" },
 			jsonc = { "prettier" },
@@ -21,17 +22,6 @@ return {
 			sh = { "shfmt" },
 			xslt = { "lemminx" },
 			xml = { "lemminx" },
-			java = { "google-java-format" },
-		},
-		-- Custom formatter options
-		formatters = {
-			-- ["google-java-format"] = {
-			-- 	args = {
-			-- 		"--aosp",
-			-- 		"--length=120",
-			-- 		"--replace",
-			-- 	},
-			-- },
 		},
 		-- Default formatting options
 		default_format_opts = {
