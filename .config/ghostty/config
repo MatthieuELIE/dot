@@ -10,7 +10,7 @@ background-opacity = 0.9
 cursor-color = #f5e0dc
 cursor-style = block
 cursor-text = #1e1e2e
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 
 # Mouse
 mouse-hide-while-typing = true
