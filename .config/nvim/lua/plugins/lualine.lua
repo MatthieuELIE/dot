@@ -17,16 +17,24 @@ return {
 			},
 		},
 		sections = {
-			lualine_a = { "mode" },
+			lualine_a = {
+				{
+					"mode",
+					icon = " ",
+				},
+			},
 			lualine_b = {
-				"branch",
+				{
+					"branch",
+					icon = " ",
+				},
 				{
 					"diff",
 					colored = true,
 					symbols = {
-						added = LazyVim.config.icons.git.added,
-						modified = LazyVim.config.icons.git.modified,
-						removed = LazyVim.config.icons.git.removed,
+						added = " ",
+						modified = " ",
+						removed = " ",
 					},
 				},
 			},
@@ -62,7 +70,9 @@ return {
 						return package.loaded["noice"] and require("noice").api.status.mode.has()
 					end,
 					color = function()
-						return { fg = Snacks.util.color("Constant") }
+						return {
+							fg = Snacks.util.color("Constant"),
+						}
 					end,
 				},
 				{
@@ -71,6 +81,11 @@ return {
 					separator = "",
 					padding = { left = 0, right = 1 },
 				},
+			},
+			lualine_z = {
+				function()
+					return "  " .. os.date("%R")
+				end,
 			},
 		},
 	},
