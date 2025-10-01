@@ -1,20 +1,6 @@
 --  Snacks.nvim Configuration
 -- https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md#-dashboard
 
--- local Job = require("plenary.job")
---
--- Job:new({
--- 	command = "git",
--- 	args = {
--- 		"config",
--- 		"get",
--- 		"remote.origin.url",
--- 	},
--- 	on_exit = function(j, return_val)
--- 		vim.notify(j:result()[1])
--- 	end,
--- }):sync()
-
 return {
 	{
 		"folke/snacks.nvim",
@@ -66,29 +52,33 @@ return {
 						cmd = "git status --short",
 						ttl = 0,
 					},
-					function()
-						local cmds = {
-							{
-								icon = " ",
-								title = "Merge Requests",
-								section = "terminal",
-								enabled = function()
-									return Snacks.git.get_root() ~= nil
-								end,
-								cmd = 'glab mr list --not-draft --not-label "Parking,Threads" --output json | jq -r \'(.[] | select(.labels | length != 0) | [.iid, .author.name, (.title[:30] + (if .title | length > 30 then "..." else "" end))]) | @tsv\' | column -t -s $\'\t\'',
-							},
-						}
-						return vim.tbl_map(function(cmd)
-							return vim.tbl_extend("force", {
-								section = "terminal",
-								pane = 2,
-								indent = 3,
-								padding = 1,
-								height = 5,
-								ttl = 0,
-							}, cmd)
-						end, cmds)
-					end,
+					{
+						icon = " ",
+						title = "Merge Requests",
+						section = "terminal",
+						enabled = function()
+							return Snacks.git.get_root() ~= nil
+						end,
+						cmd = "glab mr list "
+							.. "--not-draft "
+							.. '--not-label "Parking,Threads" '
+							.. "--output json | "
+							.. "jq -r "
+							.. "'(.[] | "
+							.. "select(.labels | length != 0) | "
+							.. "["
+							.. '"\\u001b[31m" + (.iid | tostring) + "\\u001b[0m", '
+							.. '"\\u001b[32m" + .author.name + "\\u001b[0m", '
+							.. '(.title[:30] + (if .title | length > 30 then "..." else "" end))'
+							.. "]) | "
+							.. "@tsv' | "
+							.. "column -t -s $'\t'",
+						pane = 2,
+						indent = 3,
+						padding = 1,
+						height = 5,
+						ttl = 0,
+					},
 				},
 			},
 		},
