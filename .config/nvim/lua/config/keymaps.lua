@@ -21,7 +21,7 @@ vim.keymap.set("n", "M", "`.zz", { desc = "Jump to exact last change" })
 vim.keymap.set("n", "<C-m>", "`0", { desc = "Jump to last cursor position on buffer exit" })
 
 -- Delete current buffer
-vim.keymap.set("n", "Q", function()
+vim.keymap.set("n", "<C-w>", function()
 	vim.cmd("bd")
 end, { noremap = true, silent = true, desc = "Delete current buffer" })
 
@@ -41,15 +41,12 @@ vim.keymap.set("v", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, de
 -- Keep last yanked text when pasting (don't overwrite clipboard)
 vim.keymap.set("v", "p", '"_dP', { noremap = true, silent = true, desc = "Paste Without Overwriting Yank" })
 
--- Replace word under cursor quickly
-vim.keymap.set("n", "<leader>j", "*``cgn", { noremap = true, silent = true, desc = "Replace word under cursor" })
-
 -- Grep search in cwd
-vim.keymap.set({ "n", "x" }, "S", function()
+vim.keymap.set({ "n", "x" }, "\\", function()
 	Snacks.picker.grep({ root = false })
 end, { noremap = true, silent = true, desc = "Grep Items (cwd)" })
 
 -- Find files in cwd
-vim.keymap.set({ "n", "x" }, "E", function()
-	Snacks.picker.files({ root = false })
+vim.keymap.set({ "n", "x" }, "<C-e>", function()
+	Snacks.picker.files()
 end, { noremap = true, silent = true, desc = "Find Files (cwd)" })

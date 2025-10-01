@@ -1,3 +1,5 @@
+local noice = require("noice")
+
 -- lualine.nvim statusline configuration using Catppuccin theme
 -- GitHub: https://github.com/nvim-lualine/lualine.nvim
 return {
@@ -49,11 +51,11 @@ return {
 					-- Show Noice command status if available
 					function()
 						---@diagnostic disable-next-line: undefined-field
-						return require("noice").api.status.command.get()
+						return noice.api.status.command.get()
 					end,
 					cond = function()
 						---@diagnostic disable-next-line: undefined-field
-						return package.loaded["noice"] and require("noice").api.status.command.has()
+						return noice.api.status.command.has()
 					end,
 					color = function()
 						return { fg = Snacks.util.color("Statement") }
@@ -63,11 +65,11 @@ return {
 					-- Show Noice mode status if available
 					function()
 						---@diagnostic disable-next-line: undefined-field
-						return require("noice").api.status.mode.get()
+						return noice.api.status.mode.get()
 					end,
 					cond = function()
 						---@diagnostic disable-next-line: undefined-field
-						return package.loaded["noice"] and require("noice").api.status.mode.has()
+						return noice.api.status.mode.has()
 					end,
 					color = function()
 						return { fg = Snacks.util.color("Constant") }

@@ -11,7 +11,7 @@ return {
 	},
 	{
 		source = {
-			Color = "rgba(28, 33, 39, 0.85)",
+			Color = "rgba(24, 24, 37, 0.85)",
 		},
 		width = "100%",
 		height = "100%",

@@ -1,3 +1,5 @@
+local catppuccin = require("catppuccin")
+
 -- LazyVim and Catppuccin colorscheme configuration
 -- GitHub: https://github.com/catppuccin/nvim
 return {
@@ -6,10 +8,11 @@ return {
 		opts = {
 			-- Set the colorscheme using Catppuccin
 			colorscheme = function()
-				require("catppuccin").load()
+				return catppuccin.load()
 			end,
 		},
 	},
+
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -21,12 +24,6 @@ return {
 			auto_integrations = true,
 			float = {
 				transparent = true,
-			},
-			integrations = {
-				dropbar = {
-					enabled = true,
-					color_mode = true,
-				},
 			},
 		},
 	},

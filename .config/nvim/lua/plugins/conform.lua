@@ -20,8 +20,6 @@ return {
 			jsonc = { "prettier" },
 			markdown = { "prettier" },
 			sh = { "shfmt" },
-			xslt = { "prettier" },
-			xml = { "prettier" },
 		},
 		-- Default formatting options
 		default_format_opts = {

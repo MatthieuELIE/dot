@@ -47,6 +47,8 @@ local exclude = {
 	"**/documentation",
 	"**/documentation/**",
 	"**/*.class",
+	"**/*.css",
+	"**/weasyprint_input",
 }
 
 -- Plugin Setup
@@ -54,43 +56,12 @@ return {
 	{
 		"folke/snacks.nvim",
 		opts = {
-			dashboard = {
-				preset = {
-					keys = {
-						{
-							icon = " ",
-							key = "f",
-							desc = "Find File",
-							action = ":lua Snacks.dashboard.pick('files')",
-						},
-						{
-							icon = " ",
-							key = "r",
-							desc = "Recent Files",
-							action = ":lua Snacks.dashboard.pick('oldfiles')",
-						},
-						{
-							icon = " ",
-							key = "s",
-							desc = "Restore Session",
-							section = "session",
-						},
-						{
-							icon = " ",
-							key = "q",
-							desc = "Quit",
-							action = ":qa",
-						},
-					},
-				},
-				sections = {
-					{
-						icon = " ",
-						title = "Keymaps",
-						section = "keys",
-						indent = 3,
-						padding = 1,
-					},
+			notifier = {
+				level = vim.log.levels.INFO,
+				icons = {
+					error = " ",
+					warn = " ",
+					info = " ",
 				},
 			},
 			picker = {
@@ -101,22 +72,27 @@ return {
 				layout = {
 					cycle = false, -- disable cycling layouts
 				},
+
 				formatters = {
 					file = {
 						filename_first = true,
 						truncate = 60,
 					},
 				},
+
 				-- Source-specific settings
 				sources = {
+
 					-- Buffers picker
 					buffers = {
 						layout = dropdownLayout,
 					},
+
 					-- File Explorer
 					explorer = {
 						auto_close = true,
 					},
+
 					-- Files picker
 					files = {
 						hidden = true,
@@ -124,6 +100,7 @@ return {
 						exclude = exclude,
 						layout = dropdownLayout,
 					},
+
 					-- Recent files picker
 					recent = {
 						hidden = true,
@@ -131,11 +108,13 @@ return {
 						exclude = exclude,
 						layout = dropdownLayout,
 					},
+
 					-- Git-related pickers
 					git_diff = { layout = horizontalLayout },
 					git_log = { layout = horizontalLayout },
 					git_log_line = { layout = horizontalLayout },
 					git_status = { layout = horizontalLayout },
+
 					-- Grep / Search
 					grep = {
 						hidden = true,
@@ -146,19 +125,14 @@ return {
 				},
 			},
 		},
+
 		-- Snacks Keymaps
 		keys = {
 			-- Disable Snacks default
 			{ "<leader>/", false },
 			{ "<leader>,", false },
-			-- Buffers picker
-			{
-				"<leader><leader>",
-				function()
-					Snacks.picker.buffers()
-				end,
-				desc = "Buffers",
-			},
+			{ "<leader><leader>", false },
+			-- New Snacks Keymaps
 			{ "<leader>bd", "<Cmd>:%bd<CR>", desc = "Delete all buffers" },
 		},
 	},
