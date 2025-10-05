@@ -1,12 +1,10 @@
 -- Faster movement (jump multiple lines/chars at once)
 vim.keymap.set({ "n", "x" }, "J", "12j", { noremap = true, silent = true, desc = "Move Down Faster" })
 vim.keymap.set({ "n", "x" }, "K", "12k", { noremap = true, silent = true, desc = "Move Up Faster" })
-vim.keymap.set({ "n", "x" }, "H", "6h", { noremap = true, silent = true, desc = "Move Left Faster" })
-vim.keymap.set({ "n", "x" }, "L", "6l", { noremap = true, silent = true, desc = "Move Right Faster" })
 
 -- Remap line navigation
-vim.keymap.set({ "n", "x" }, "-", "$", { noremap = true, desc = "Go to End of Line" })
-vim.keymap.set({ "n", "x" }, "0", "^", { noremap = true, desc = "Go to First Non-Blank" })
+vim.keymap.set({ "n", "x" }, "H", "^", { noremap = true, desc = "Go to First Non-Blank" })
+vim.keymap.set({ "n", "x" }, "L", "$", { noremap = true, desc = "Go to End of Line" })
 
 -- Center search results (keep cursor in middle line while searching)
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next Search Result (centered)" })

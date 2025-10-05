@@ -3,6 +3,10 @@
         "branch": "main",
         "commit": "b4606f9df3395a261bb6a09acc837993da5d8bfc"
     },
+    "alpha-nvim": {
+        "branch": "main",
+        "commit": "2b3cbcdd980cae1e022409289245053f62fb50f6"
+    },
     "blink.cmp": {
         "branch": "main",
         "commit": "327fff91fe6af358e990be7be1ec8b78037d2138"

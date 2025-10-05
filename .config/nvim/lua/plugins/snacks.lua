@@ -54,6 +54,45 @@ return {
 	{
 		"folke/snacks.nvim",
 		opts = {
+			dashboard = {
+				preset = {
+					keys = {
+						{
+							icon = " ",
+							key = "f",
+							desc = "Find File",
+							action = ":lua Snacks.dashboard.pick('files')",
+						},
+						{
+							icon = " ",
+							key = "r",
+							desc = "Recent Files",
+							action = ":lua Snacks.dashboard.pick('oldfiles')",
+						},
+						{
+							icon = " ",
+							key = "s",
+							desc = "Restore Session",
+							section = "session",
+						},
+						{
+							icon = " ",
+							key = "q",
+							desc = "Quit",
+							action = ":qa",
+						},
+					},
+				},
+				sections = {
+					{
+						icon = " ",
+						title = "Keymaps",
+						section = "keys",
+						indent = 3,
+						padding = 1,
+					},
+				},
+			},
 			picker = {
 				-- Global settings
 				hidden = true, -- include hidden files
@@ -80,6 +119,13 @@ return {
 					},
 					-- Files picker
 					files = {
+						hidden = true,
+						ignored = true,
+						exclude = exclude,
+						layout = dropdownLayout,
+					},
+					-- Recent files picker
+					recent = {
 						hidden = true,
 						ignored = true,
 						exclude = exclude,

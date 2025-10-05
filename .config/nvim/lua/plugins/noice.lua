@@ -18,10 +18,10 @@ return {
 		cmdline = {
 			view = "cmdline",
 			format = {
-				cmdline = { icon = " " },
-				filter = { icon = " " },
-				search_down = { icon = " " },
-				search_up = { icon = " " },
+				cmdline = { icon = " " },
+				filter = { icon = " " },
+				search_down = { icon = " " },
+				search_up = { icon = " " },
 			},
 		},
 		-- Message display configuration
