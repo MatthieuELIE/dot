@@ -1,6 +1,8 @@
 --  Snacks.nvim Configuration
 -- https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md#-dashboard
 
+local utils = require("utils")
+
 return {
 	{
 		"folke/snacks.nvim",
@@ -52,33 +54,30 @@ return {
 						cmd = "git status --short",
 						ttl = 0,
 					},
-					{
-						icon = " ",
-						title = "Merge Requests",
-						section = "terminal",
-						enabled = function()
-							return Snacks.git.get_root() ~= nil
-						end,
-						cmd = "glab mr list "
-							.. "--not-draft "
-							.. '--not-label "Parking,Threads" '
-							.. "--output json | "
-							.. "jq -r "
-							.. "'(.[] | "
-							.. "select(.labels | length != 0) | "
-							.. "["
-							.. '"\\u001b[31m" + (.iid | tostring) + "\\u001b[0m", '
-							.. '"\\u001b[32m" + .author.name + "\\u001b[0m", '
-							.. '(.title[:30] + (if .title | length > 30 then "..." else "" end))'
-							.. "]) | "
-							.. "@tsv' | "
-							.. "column -t -s $'\t'",
-						pane = 2,
-						indent = 3,
-						padding = 1,
-						height = 5,
-						ttl = 0,
-					},
+					function()
+						local cmds = {
+							{
+								icon = " ",
+								title = "Coworkers Merge Requests",
+								key = "m",
+								action = function()
+									vim.ui.open(os.getenv("GITLAB_MR_URL") or "https://www.google.fr/")
+								end,
+								cmd = utils.glab_coworkers_mr(),
+							},
+						}
+						return vim.tbl_map(function(cmd)
+							return vim.tbl_extend("force", {
+								section = "terminal",
+								enabled = utils.git_enabled(),
+								pane = 2,
+								indent = 3,
+								padding = 1,
+								height = 5,
+								ttl = 0,
+							}, cmd)
+						end, cmds)
+					end,
 				},
 			},
 		},

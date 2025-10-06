@@ -47,6 +47,8 @@ local exclude = {
 	"**/documentation",
 	"**/documentation/**",
 	"**/*.class",
+	"**/*.css",
+	"**/weasyprint_input",
 }
 
 -- Plugin Setup
