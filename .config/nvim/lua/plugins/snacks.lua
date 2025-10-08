@@ -56,6 +56,14 @@ return {
 	{
 		"folke/snacks.nvim",
 		opts = {
+			notifier = {
+				level = vim.log.levels.INFO,
+				icons = {
+					error = " ",
+					warn = " ",
+					info = " ",
+				},
+			},
 			picker = {
 				-- Global settings
 				hidden = true, -- include hidden files
@@ -114,14 +122,8 @@ return {
 			-- Disable Snacks default
 			{ "<leader>/", false },
 			{ "<leader>,", false },
-			-- Buffers picker
-			{
-				"<leader><leader>",
-				function()
-					Snacks.picker.buffers()
-				end,
-				desc = "Buffers",
-			},
+			{ "<leader><leader>", false },
+			-- New Snacks Keymaps
 			{ "<leader>bd", "<Cmd>:%bd<CR>", desc = "Delete all buffers" },
 		},
 	},
