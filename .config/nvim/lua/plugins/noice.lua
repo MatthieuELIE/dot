@@ -7,6 +7,7 @@ return {
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
 	},
+
 	opts = {
 		-- Preset configurations for common use cases
 		presets = {
@@ -14,6 +15,7 @@ return {
 			command_palette = false,
 			bottom_search = true,
 		},
+
 		-- Cmdline appearance and placement
 		cmdline = {
 			view = "cmdline",
@@ -24,10 +26,12 @@ return {
 				search_up = { icon = " " },
 			},
 		},
+
 		-- Message display configuration
 		messages = {
 			view = "mini",
 		},
+
 		-- Custom views for various UI components
 		views = {
 			-- Cmdline view window position (relative from bottom)
@@ -36,18 +40,8 @@ return {
 					row = -1,
 				},
 			},
-			-- Popupmenu view style and position
-			popupmenu = {
-				position = {
-					row = -3,
-					col = 0,
-				},
-				border = {
-					style = "rounded",
-					padding = { 0, 1 },
-				},
-			},
 		},
+
 		-- Configuration for LSP hover documentation windows
 		lsp = {
 			hover = {
@@ -59,6 +53,7 @@ return {
 				},
 			},
 		},
+
 		-- Message routing rules (filter out certain LSP progress messages)
 		routes = {
 			{

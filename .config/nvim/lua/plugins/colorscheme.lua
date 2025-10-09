@@ -10,6 +10,7 @@ return {
 			end,
 		},
 	},
+
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -21,12 +22,6 @@ return {
 			auto_integrations = true,
 			float = {
 				transparent = true,
-			},
-			integrations = {
-				dropbar = {
-					enabled = true,
-					color_mode = true,
-				},
 			},
 		},
 	},
