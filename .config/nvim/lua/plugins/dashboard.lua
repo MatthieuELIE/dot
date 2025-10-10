@@ -45,12 +45,12 @@ return {
 						padding = 1,
 					},
 					{
-						icon = " ",
+						icon = " ",
 						title = "Git",
 						padding = { 0, 1, 0, 0 },
 					},
 					{
-						icon = " ",
+						icon = " ",
 						key = "g",
 						desc = "Open Projects",
 						action = function()
