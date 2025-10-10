@@ -1,7 +1,7 @@
 --  Snacks.nvim Configuration
 -- https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md#-dashboard
 
-local utils = require("utils")
+local gitlab = require("utils.gitlab")
 
 return {
 	{
@@ -29,6 +29,22 @@ return {
 							section = "session",
 						},
 						{
+							icon = " ",
+							key = "m",
+							desc = "My Merge Requests",
+							action = function()
+								vim.ui.open(gitlab.my_merge_requests())
+							end,
+						},
+						{
+							icon = " ",
+							key = "n",
+							desc = "Coworkers Merge Requests",
+							action = function()
+								vim.ui.open(gitlab.coworker_merge_requests())
+							end,
+						},
+						{
 							icon = " ",
 							key = "q",
 							desc = "Quit",
@@ -39,45 +55,11 @@ return {
 				sections = {
 					{
 						icon = " ",
-						title = "Keymaps",
+						title = "Navigation",
 						section = "keys",
 						indent = 3,
 						padding = 1,
 					},
-					{
-						icon = " ",
-						title = "Git Status",
-						section = "terminal",
-						enabled = function()
-							return Snacks.git.get_root() ~= nil
-						end,
-						cmd = "git status --short",
-						ttl = 0,
-					},
-					function()
-						local cmds = {
-							{
-								icon = " ",
-								title = "Coworkers Merge Requests",
-								key = "m",
-								action = function()
-									vim.ui.open(os.getenv("GITLAB_MR_URL") or "https://www.google.fr/")
-								end,
-								cmd = utils.glab_coworkers_mr(),
-							},
-						}
-						return vim.tbl_map(function(cmd)
-							return vim.tbl_extend("force", {
-								section = "terminal",
-								enabled = utils.git_enabled(),
-								pane = 2,
-								indent = 3,
-								padding = 1,
-								height = 5,
-								ttl = 0,
-							}, cmd)
-						end, cmds)
-					end,
 				},
 			},
 		},
