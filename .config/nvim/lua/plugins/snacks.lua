@@ -134,6 +134,20 @@ return {
 			{ "<leader><leader>", false },
 			-- New Snacks Keymaps
 			{ "<leader>bd", "<Cmd>:%bd<CR>", desc = "Delete all buffers" },
+			{
+				"<leader>E",
+				function()
+					Snacks.explorer({ cwd = LazyVim.root() })
+				end,
+				desc = "Explorer Snacks (root dir)",
+			},
+			{
+				"<leader>e",
+				function()
+					Snacks.explorer()
+				end,
+				desc = "Explorer Snacks (cwd)",
+			},
 		},
 	},
 }
