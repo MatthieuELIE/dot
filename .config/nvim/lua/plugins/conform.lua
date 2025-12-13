@@ -19,6 +19,7 @@ return {
 			json = { "prettier" },
 			jsonc = { "prettier" },
 			markdown = { "prettier" },
+			vue = { "prettier" },
 			sh = { "shfmt" },
 		},
 		-- Default formatting options
