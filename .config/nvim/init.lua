@@ -1,7 +1,5 @@
--- Bootstrap LazyVim and user plugins.
--- This file initializes the plugin manager (lazy.nvim) and loads all configurations.
-require("config.lazy")
+require("options")
+require("keymaps")
+require("autocmds")
 
--- Load custom user commands.
--- This file contains all Neovim user commands for improved maintainability.
-require("config.commands")
+require("pack")

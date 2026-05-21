@@ -16,9 +16,6 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = "Prev Search Result (centered)" })
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next Buffer" })
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true, desc = "Prev Buffer" })
 
--- Jump to the exact position of the last change in the current buffer
-vim.keymap.set("n", "M", "`.zz", { desc = "Jump to exact last change" })
-
 -- Jump to the cursor position when last leaving the buffer (`0 mark)
 vim.keymap.set("n", "<C-m>", "`0", { desc = "Jump to last cursor position on buffer exit" })
 
@@ -43,12 +40,19 @@ vim.keymap.set("v", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, de
 -- Keep last yanked text when pasting (don't overwrite clipboard)
 vim.keymap.set("v", "p", '"_dP', { noremap = true, silent = true, desc = "Paste Without Overwriting Yank" })
 
--- Grep search in cwd
-vim.keymap.set({ "n", "x" }, "\\", function()
-	Snacks.picker.grep({ root = false })
-end, { noremap = true, silent = true, desc = "Grep Items (cwd)" })
+-- Save file
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
--- Find files in cwd
-vim.keymap.set({ "n", "x" }, "<C-e>", function()
-	Snacks.picker.files()
-end, { noremap = true, silent = true, desc = "Find Files (cwd)" })
+-- Move to window using the <ctrl> hjkl keys
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+
+-- Move Lines
+vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+vim.keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
