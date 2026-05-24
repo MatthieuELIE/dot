@@ -12,9 +12,17 @@
       "rev": "24c70347f6b2128679f47d2eb765156ef34bf9e0",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "fidget.nvim": {
+      "rev": "82404b196e73a00b1727a91903beef5ddc319d22",
+      "src": "https://github.com/j-hui/fidget.nvim"
+    },
     "lualine.nvim": {
       "rev": "131a558e13f9f28b15cd235557150ccb23f89286",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
+    },
+    "mini.diff": {
+      "rev": "5af2b6be4a4beb673f3196a414f6fd932bbedd48",
+      "src": "https://github.com/nvim-mini/mini.diff"
     },
     "mini.icons": {
       "rev": "520995f1d75da0e4cc901ee95080b1ff2bc46b94",

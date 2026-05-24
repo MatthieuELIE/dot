@@ -1,6 +1,6 @@
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
-vim.opt.clipboard = vim.env.SSH_CONNECTION and "" or "unnamedplus"
+vim.opt.clipboard = vim.env.SSH_CONNECTION and '' or 'unnamedplus'
 
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
@@ -16,7 +16,7 @@ vim.opt.relativenumber = true
 
 vim.opt.termguicolors = true
 
-vim.opt.inccommand = "split"
+vim.opt.inccommand = 'split'
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
