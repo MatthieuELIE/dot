@@ -17,6 +17,7 @@ vim.lsp.config('lua_ls', {
         },
     },
 })
+vim.lsp.enable({ 'lua_ls' })
 
 vim.lsp.config('rust_analyzer', {
     capabilities = capabilities,
@@ -29,6 +30,28 @@ vim.lsp.config('rust_analyzer', {
         },
     },
 })
-
-vim.lsp.enable({ 'lua_ls' })
 vim.lsp.enable('rust_analyzer')
+
+vim.lsp.config('ts_ls', {
+    capabilities = capabilities,
+    cmd = { 'typescript-language-server', '--stdio' },
+    filetypes = { 'javascript', 'typescript' },
+    root_markers = { 'package.json', 'tsconfig.json', '.git' },
+})
+vim.lsp.enable('ts_ls')
+
+vim.lsp.config('eslint', {
+    capabilities = capabilities,
+    cmd = { 'vscode-eslint-language-server', '--stdio' },
+    filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+    root_markers = { '.eslintrc', '.eslintrc.js', '.eslintrc.json', 'eslint.config.js', 'package.json', '.git' },
+    settings = {
+        validate = 'on',
+        rulesCustomizations = {},
+        run = 'onType',
+        nodePath = '',
+        workingDirectory = { mode = 'auto' },
+    },
+})
+
+vim.lsp.enable('eslint')
