@@ -17,7 +17,7 @@ vim.keymap.set('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true, desc
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true, desc = 'Prev Buffer' })
 vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>', { desc = 'Close all other buffers' })
 vim.keymap.set('n', '<C-w>', function()
-	vim.cmd('bd')
+    vim.cmd('bd')
 end, { noremap = true, silent = true, desc = 'Delete current buffer' })
 
 -- Jump to the cursor position when last leaving the buffer (`0 mark)

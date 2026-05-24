@@ -20,3 +20,7 @@ vim.opt.inccommand = 'split'
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+vim.o.winborder = 'rounded'
+
+vim.o.signcolumn = 'yes'
