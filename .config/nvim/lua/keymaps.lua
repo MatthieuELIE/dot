@@ -1,59 +1,48 @@
--- Faster movement (jump multiple lines/chars at once)
-vim.keymap.set({ 'n', 'x' }, 'J', '12j', { noremap = true, silent = true, desc = 'Move Down Faster' })
-vim.keymap.set({ 'n', 'x' }, 'K', '12k', { noremap = true, silent = true, desc = 'Move Up Faster' })
-vim.keymap.set({ 'n', 'x' }, 'H', '6h', { noremap = true, silent = true, desc = 'Move Left Faster' })
-vim.keymap.set({ 'n', 'x' }, 'L', '6l', { noremap = true, silent = true, desc = 'Move Right Faster' })
+local keymap = vim.keymap.set
 
--- Remap line navigation
-vim.keymap.set({ 'n', 'x' }, 'H', '^', { noremap = true, desc = 'Go to First Non-Blank' })
-vim.keymap.set({ 'n', 'x' }, 'L', '$', { noremap = true, desc = 'Go to End of Line' })
+-- Quick save
+keymap({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
 
--- Center search results (keep cursor in middle line while searching)
-vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next Search Result (centered)' })
-vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Prev Search Result (centered)' })
+-- Stay on home row: exit insert mode easily
+keymap('i', 'jj', '<ESC>', { desc = 'Exit Insert' })
+keymap('i', 'jk', '<ESC>', { desc = 'Exit Insert' })
+keymap('i', 'kk', '<ESC>', { desc = 'Exit Insert' })
+keymap('i', 'kj', '<ESC>', { desc = 'Exit Insert' })
 
--- Buffer
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', { noremap = true, silent = true, desc = 'Next Buffer' })
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { noremap = true, silent = true, desc = 'Prev Buffer' })
-vim.keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>', { desc = 'Close all other buffers' })
-vim.keymap.set('n', '<C-w>', function()
-    vim.cmd('bd')
-end, { noremap = true, silent = true, desc = 'Delete current buffer' })
+-- Better line navigation (Home/End behavior)
+keymap({ 'n', 'x' }, 'H', '^', { desc = 'Go to start of line' })
+keymap({ 'n', 'x' }, 'L', '$', { desc = 'Go to end of line' })
 
--- Jump to the cursor position when last leaving the buffer (`0 mark)
-vim.keymap.set('n', '<C-m>', '`0', { desc = 'Jump to last cursor position on buffer exit' })
+-- Vertical speed: jump 12 lines at a time
+keymap({ 'n', 'x' }, 'J', '12j', { desc = 'Move Down Faster' })
+keymap({ 'n', 'x' }, 'K', '12k', { desc = 'Move Up Faster' })
 
--- Easily exit insert mode with jk/jj/kk/kj combos
-vim.keymap.set('i', 'jj', '<ESC>', { noremap = true, silent = true, desc = 'Exit Insert' })
-vim.keymap.set('i', 'jk', '<ESC>', { noremap = true, silent = true, desc = 'Exit Insert' })
-vim.keymap.set('i', 'kk', '<ESC>', { noremap = true, silent = true, desc = 'Exit Insert' })
-vim.keymap.set('i', 'kj', '<ESC>', { noremap = true, silent = true, desc = 'Exit Insert' })
+-- Keep cursor centered during search and jumps
+keymap('n', 'n', 'nzzzv', { desc = 'Next search result' })
+keymap('n', 'N', 'Nzzzv', { desc = 'Prev search result' })
+keymap('n', '<C-m>', '`0', { desc = 'Return to last edit position' })
 
--- Delete single char without yanking into default register
-vim.keymap.set('n', 'x', '"_x', { noremap = true, silent = true, desc = 'Delete Char (no yank)' })
+-- Smart line moving (handles counts and visual blocks)
+keymap('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
+keymap('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
+keymap('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
+keymap('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
+keymap('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
+keymap('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
 
--- Move selected lines up/down (Visual Mode)
-vim.keymap.set('v', '<A-j>', ':m .+1<CR>==', { noremap = true, silent = true, desc = 'Move Line Down' })
-vim.keymap.set('v', '<A-k>', ':m .-2<CR>==', { noremap = true, silent = true, desc = 'Move Line Up' })
+-- Editing improvements
+keymap('n', 'x', '"_x', { desc = 'Delete without yanking' })
+keymap('n', 'yig', 'ggVGy', { desc = 'Yank entire file' })
+keymap('v', 'p', '"_dP', { desc = 'Paste without overwriting clipboard' })
 
--- Keep last yanked text when pasting (don't overwrite clipboard)
-vim.keymap.set('v', 'p', '"_dP', { noremap = true, silent = true, desc = 'Paste Without Overwriting Yank' })
+-- Buffer management
+keymap('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
+keymap('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
+keymap('n', '<leader>bo', '<cmd>%bd|e#|bd#<CR>', { desc = 'Close all but current buffer' })
+keymap('n', '<C-w>', function() vim.cmd('bd') end, { desc = 'Delete current buffer' })
 
-vim.keymap.set('n', 'yig', 'ggVGy', { desc = 'Yank entire file' })
-
--- Save file
-vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
-
--- Move to window using the <ctrl> hjkl keys
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = true })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
-
--- Move Lines
-vim.keymap.set('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
-vim.keymap.set('n', '<A-k>', "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = 'Move Up' })
-vim.keymap.set('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
-vim.keymap.set('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
-vim.keymap.set('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = 'Move Down' })
-vim.keymap.set('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
+-- Smooth window switching
+keymap('n', '<C-h>', '<C-w>h', { desc = 'Move to left window', remap = true })
+keymap('n', '<C-j>', '<C-w>j', { desc = 'Move to lower window', remap = true })
+keymap('n', '<C-k>', '<C-w>k', { desc = 'Move to upper window', remap = true })
+keymap('n', '<C-l>', '<C-w>l', { desc = 'Move to right window', remap = true })
