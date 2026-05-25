@@ -9,6 +9,10 @@ require('telescope').setup({
                 height = 0.9,
             },
         },
+        file_ignore_patterns = {
+            '%.git/',
+            'node_modules/',
+        },
     },
     pickers = {
         find_files = {
