@@ -64,9 +64,7 @@ rustup component add rustfmt
 ### Telescope
 
 - `<leader>ff` — Find files
-- `<C-e>` — Find files
 - `<leader>fg` — Live grep
-- `\` — Live grep
 - See [Telescope default mappings](https://github.com/nvim-telescope/telescope.nvim#default-mappings) for more.
 
 ### Oil
