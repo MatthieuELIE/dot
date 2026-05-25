@@ -21,7 +21,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map('n', '<leader>k', vim.lsp.buf.hover, 'Hover documentation')
         map('n', 'gs', vim.lsp.buf.signature_help, 'Signature help')
 
-        map('n', '<leader>rn', vim.lsp.buf.rename, 'Rename symbol')
         map('n', '<leader>ca', vim.lsp.buf.code_action, 'Code action')
 
         map('n', '<leader>d', vim.diagnostic.open_float, 'Open diagnostic float')

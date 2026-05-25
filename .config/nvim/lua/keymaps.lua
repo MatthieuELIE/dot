@@ -39,6 +39,8 @@ vim.keymap.set('v', '<A-k>', ':m .-2<CR>==', { noremap = true, silent = true, de
 -- Keep last yanked text when pasting (don't overwrite clipboard)
 vim.keymap.set('v', 'p', '"_dP', { noremap = true, silent = true, desc = 'Paste Without Overwriting Yank' })
 
+vim.keymap.set('n', 'yig', 'ggVGy', { desc = 'Yank entire file' })
+
 -- Save file
 vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
 

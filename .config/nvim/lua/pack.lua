@@ -22,4 +22,6 @@ vim.pack.add({
     { src = 'https://github.com/akinsho/bufferline.nvim' },
 
     { src = 'https://github.com/j-hui/fidget.nvim' },
+
+    { src = 'https://github.com/rmagatti/auto-session' },
 })
