@@ -9,10 +9,6 @@ keymap('i', 'jk', '<ESC>', { desc = 'Exit Insert' })
 keymap('i', 'kk', '<ESC>', { desc = 'Exit Insert' })
 keymap('i', 'kj', '<ESC>', { desc = 'Exit Insert' })
 
--- Better line navigation (Home/End behavior)
-keymap({ 'n', 'x' }, 'H', '^', { desc = 'Go to start of line' })
-keymap({ 'n', 'x' }, 'L', '$', { desc = 'Go to end of line' })
-
 -- Vertical speed: jump 12 lines at a time
 keymap({ 'n', 'x' }, 'J', '12j', { desc = 'Move Down Faster' })
 keymap({ 'n', 'x' }, 'K', '12k', { desc = 'Move Up Faster' })
@@ -38,8 +34,8 @@ keymap('v', 'p', '"_dP', { desc = 'Paste without overwriting clipboard' })
 -- Buffer management
 keymap('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
 keymap('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
+keymap('n', '<leader>bd', '<cmd>%bd<CR>', { desc = 'Close current buffer' })
 keymap('n', '<leader>bo', '<cmd>%bd|e#|bd#<CR>', { desc = 'Close all but current buffer' })
-keymap('n', '<C-w>', function() vim.cmd('bd') end, { desc = 'Delete current buffer' })
 
 -- Smooth window switching
 keymap('n', '<C-h>', '<C-w>h', { desc = 'Move to left window', remap = true })

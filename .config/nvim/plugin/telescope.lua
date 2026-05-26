@@ -18,6 +18,16 @@ require('telescope').setup({
         find_files = {
             hidden = true,
         },
+        live_grep = {
+            additional_args = function()
+                return { '--hidden' }
+            end,
+        },
+        grep_string = {
+            additional_args = function()
+                return { '--hidden' }
+            end,
+        },
     },
 })
 
@@ -25,3 +35,4 @@ local builtin = require('telescope.builtin')
 
 vim.keymap.set('n', '<C-e>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '\\', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fw', builtin.grep_string, { desc = 'Telescope live grep' })
