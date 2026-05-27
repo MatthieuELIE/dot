@@ -24,3 +24,5 @@ vim.opt.splitbelow = true
 vim.o.winborder = 'rounded'
 
 vim.o.signcolumn = 'yes'
+
+vim.opt.undofile = true
