@@ -7,6 +7,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'help',
+    callback = function()
+        vim.cmd('wincmd L')
+        vim.cmd('vertical resize 100')
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+    end,
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         local function map(mode, lhs, rhs, desc)
