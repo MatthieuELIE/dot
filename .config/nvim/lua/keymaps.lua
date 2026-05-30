@@ -8,8 +8,8 @@ vim.keymap.set('i', 'kk', '<ESC>', { desc = 'Exit Insert' })
 vim.keymap.set('i', 'kj', '<ESC>', { desc = 'Exit Insert' })
 
 -- Vertical speed: jump 12 lines at a time
-vim.keymap.set({ 'n', 'x' }, 'J', '12j', { desc = 'Move Down Faster' })
-vim.keymap.set({ 'n', 'x' }, 'K', '12k', { desc = 'Move Up Faster' })
+vim.keymap.set({ 'n', 'x' }, 'J', '}zz', { desc = 'Move Down Faster' })
+vim.keymap.set({ 'n', 'x' }, 'K', '{zz', { desc = 'Move Up Faster' })
 
 -- Keep cursor centered during search and jumps
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result' })
