@@ -33,3 +33,5 @@ vim.opt.laststatus = 3
 -- Editing and completion
 vim.opt.undofile = true
 vim.opt.completeopt = 'menu,menuone,noselect'
+
+vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
