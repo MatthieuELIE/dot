@@ -6,4 +6,5 @@ require('bufferline').setup({
         show_close_icon = false,
         always_show_bufferline = false,
     },
+    highlights = require('catppuccin.special.bufferline').get_theme({}),
 })

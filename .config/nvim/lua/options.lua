@@ -29,9 +29,11 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.o.winborder = 'rounded'
 vim.opt.laststatus = 3
+vim.opt.showmode = false
 
 -- Editing and completion
 vim.opt.undofile = true
 vim.opt.completeopt = 'menu,menuone,noselect'
 
+-- Session management
 vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
