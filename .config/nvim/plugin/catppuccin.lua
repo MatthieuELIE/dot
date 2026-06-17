@@ -1,7 +1,10 @@
 require('catppuccin').setup({
     flavour = 'mocha',
     transparent_background = true,
-
+    integrations = {
+        treesitter = true,
+        lsp_semantic_tokens = true,
+    },
     custom_highlights = function(colors)
         return {
             TelescopeNormal = { bg = 'none' },

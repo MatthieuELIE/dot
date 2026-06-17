@@ -53,23 +53,26 @@ vim.lsp.config('eslint', {
     },
 })
 
-vim.lsp.config('ts_ls', {
+vim.lsp.config('vtsls', {
     capabilities = capabilities,
-    cmd = { 'typescript-language-server', '--stdio' },
-    filetypes = { 'javascript', 'typescript' },
-    root_markers = { 'package.json', 'tsconfig.json', '.git' },
-})
-
-vim.lsp.config('volar', {
-    capabilities = capabilities,
-    cmd = { 'vue-language-server', '--stdio' },
-    filetypes = { 'vue' },
-    root_markers = { 'package.json', 'vue.config.js', 'vite.config.js', '.git' },
+    cmd = { 'vtsls', '--stdio' },
+    filetypes = { 'javascript', 'typescript', 'vue' },
+    root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
     settings = {
-        vue = {
-            hybridMode = true,
+        vtsls = {
+            tsserver = {
+                globalPlugins = {
+                    {
+                        name = '@vue/typescript-plugin',
+                        location = '/opt/homebrew/lib/node_modules/@vue/typescript-plugin',
+                        languages = { 'vue' },
+                        configNamespace = 'typescript',
+                        enableForWorkspaceTypeScriptVersions = true,
+                    },
+                },
+            },
         },
     },
 })
 
-vim.lsp.enable({ 'lua_ls', 'rust_analyzer', 'eslint', 'ts_ls', 'volar' })
+vim.lsp.enable({ 'lua_ls', 'rust_analyzer', 'eslint', 'vtsls' })
