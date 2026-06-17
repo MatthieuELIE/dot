@@ -13,8 +13,3 @@ vim.diagnostic.config({
     underline = true,
     update_in_insert = false,
 })
-
--- Floating windows (LSP hover, etc.) styling
--- Remove background to keep transparency and visual focus
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })

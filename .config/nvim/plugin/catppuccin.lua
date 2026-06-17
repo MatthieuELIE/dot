@@ -17,6 +17,10 @@ require('catppuccin').setup({
             TelescopePromptTitle = { bg = 'none', fg = colors.red },
             TelescopeResultsTitle = { bg = 'none', fg = colors.green },
             TelescopePreviewTitle = { bg = 'none', fg = colors.mauve },
+
+            NormalFloat = { bg = 'none' },
+            FloatBorder = { bg = 'none' },
+            Pmenu = { bg = 'none' },
         }
     end,
 })
