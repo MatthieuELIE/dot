@@ -30,29 +30,6 @@ vim.lsp.config('rust_analyzer', {
     },
 })
 
-vim.lsp.config('eslint', {
-    capabilities = capabilities,
-    cmd = { 'vscode-eslint-language-server', '--stdio' },
-    filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-    root_dir = function(path)
-        return vim.fs.root(path, {
-            '.eslintrc.js',
-            '.eslintrc.json',
-            'eslint.config.js',
-            'eslint.config.ts',
-        })
-    end,
-    settings = {
-        eslint = {
-            validate = 'on',
-            rulesCustomizations = {},
-            run = 'onType',
-            nodePath = '',
-            workingDirectories = { mode = 'auto' },
-        },
-    },
-})
-
 vim.lsp.config('vtsls', {
     capabilities = capabilities,
     cmd = { 'vtsls', '--stdio' },
@@ -75,4 +52,8 @@ vim.lsp.config('vtsls', {
     },
 })
 
-vim.lsp.enable({ 'lua_ls', 'rust_analyzer', 'eslint', 'vtsls' })
+vim.lsp.enable({
+    'lua_ls',
+    'rust_analyzer',
+    'vtsls',
+})
