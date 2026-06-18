@@ -1,8 +1,11 @@
 require('conform').setup({
     formatters_by_ft = {
+        javascript = { 'prettier' },
         lua = { 'stylua' },
-        rust = { 'rustfmt' },
         markdown = { 'prettier' },
+        rust = { 'rustfmt' },
+        typescript = { 'prettier' },
+        vue = { 'prettier' },
     },
     format_on_save = {
         timeout_ms = 500,
