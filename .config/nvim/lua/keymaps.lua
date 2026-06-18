@@ -14,7 +14,6 @@ vim.keymap.set({ 'n', 'x' }, 'K', '{zz', { desc = 'Move Up Faster' })
 -- Keep cursor centered during search and jumps
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Prev search result' })
-vim.keymap.set('n', '<C-m>', '`0', { desc = 'Return to last edit position' })
 
 -- Smart line moving (handles counts and visual blocks)
 vim.keymap.set('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
@@ -32,7 +31,7 @@ vim.keymap.set('v', 'p', '"_dP', { desc = 'Paste without overwriting clipboard' 
 -- Buffer management
 vim.keymap.set('n', '<Tab>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
-vim.keymap.set('n', '<leader>bd', '<cmd>%bd<CR>', { desc = 'Close current buffer' })
+vim.keymap.set('n', '<leader>bd', '<cmd>%bd<CR>', { desc = 'Close all buffers' })
 vim.keymap.set('n', '<leader>bo', '<cmd>%bd|e#|bd#<CR>', { desc = 'Close all but current buffer' })
 
 -- Smooth window switching

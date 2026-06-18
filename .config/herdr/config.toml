@@ -1,0 +1,11 @@
+onboarding = false
+
+[theme]
+name = "catppuccin"
+
+[keys]
+prefix = "ctrl+a"
+
+detach = "prefix+d"
+previous_workspace = "prefix+k"
+next_workspace = "prefix+j"

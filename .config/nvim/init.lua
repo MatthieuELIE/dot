@@ -3,9 +3,6 @@ require('options')
 require('keymaps')
 require('autocmds')
 
--- Plugin loading
-require('pack')
-
 -- Global diagnostic UI configuration
 vim.diagnostic.config({
     virtual_text = true,
