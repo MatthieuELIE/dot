@@ -30,6 +30,12 @@ vim.lsp.config('rust_analyzer', {
     },
 })
 
+local ignored_codes = {
+    [6133] = true,
+    [6196] = true,
+    [6138] = true,
+}
+
 vim.lsp.config('vtsls', {
     capabilities = capabilities,
     cmd = { 'vtsls', '--stdio' },
@@ -49,6 +55,19 @@ vim.lsp.config('vtsls', {
                 },
             },
         },
+    },
+
+    handlers = {
+        ['textDocument/publishDiagnostics'] = function(err, result, ctx, config)
+            if result and result.diagnostics then
+                result.diagnostics = vim.tbl_filter(function(d)
+                    local code = tonumber(d.code) or d.code
+                    return not ignored_codes[code]
+                end, result.diagnostics)
+            end
+
+            vim.lsp.handlers['textDocument/publishDiagnostics'](err, result, ctx, config)
+        end,
     },
 })
 
