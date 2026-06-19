@@ -21,6 +21,8 @@ vim.pack.add({
     { src = 'https://github.com/hrsh7th/nvim-cmp' },
     { src = 'https://github.com/hrsh7th/cmp-nvim-lsp' },
 
+    { src = 'https://github.com/esmuellert/nvim-eslint' },
+
     { src = 'https://github.com/akinsho/bufferline.nvim' },
 
     { src = 'https://github.com/j-hui/fidget.nvim' },

@@ -52,6 +52,10 @@
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
+    "nvim-eslint": {
+      "rev": "3c893af4152a417742e6ce96d9468b3f26359006",
+      "src": "https://github.com/esmuellert/nvim-eslint"
+    },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
