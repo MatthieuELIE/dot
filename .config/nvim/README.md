@@ -42,7 +42,7 @@ rustup component add rustfmt
 - `gD` — Go to declaration
 - `gi` — Go to implementation
 - `gr` — Go to references
-- `<leader>k` — Hover documentation
+- `H` — Hover documentation
 - `gs` — Signature help
 - `<leader>rn` — Rename symbol
 - `<leader>ca` — Code action
@@ -79,8 +79,6 @@ rustup component add rustfmt
 
 - `J` — Move down faster (12 lines)
 - `K` — Move up faster (12 lines)
-- `H` — Go to first non-blank character
-- `L` — Go to end of line
 - `n` — Next search result (centered)
 - `N` — Previous search result (centered)
 - `jj/jk/kk/kj` — Exit insert mode

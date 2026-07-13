@@ -1,3 +1,8 @@
+vim.pack.add({
+    { src = 'https://github.com/nvim-lualine/lualine.nvim' },
+    { src = 'https://github.com/nvim-mini/mini.icons' },
+})
+
 require('lualine').setup({
     options = {
         theme = 'catppuccin-nvim',

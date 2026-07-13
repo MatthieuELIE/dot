@@ -1,3 +1,9 @@
+vim.pack.add({
+    { src = 'https://github.com/nvim-telescope/telescope.nvim' },
+    { src = 'https://github.com/nvim-telescope/telescope-fzf-native.nvim' },
+    { src = 'https://github.com/nvim-lua/plenary.nvim' },
+})
+
 require('telescope').setup({
     defaults = {
         layout_strategy = 'horizontal',
@@ -13,6 +19,8 @@ require('telescope').setup({
         file_ignore_patterns = {
             '%.git/',
             'node_modules/',
+            'public/',
+            '**.class',
         },
     },
 

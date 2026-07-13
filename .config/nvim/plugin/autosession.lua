@@ -1,3 +1,7 @@
+vim.pack.add({
+    { src = 'https://github.com/rmagatti/auto-session' },
+})
+
 local auto_session = require('auto-session')
 
 auto_session.setup({
