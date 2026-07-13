@@ -26,6 +26,7 @@ window-padding-balance = true
 unfocused-split-opacity = 0.2
 copy-on-select = false
 shell-integration = zsh
+term = xterm-ghostty
 
 # Mac OS
 macos-titlebar-proxy-icon = hidden
