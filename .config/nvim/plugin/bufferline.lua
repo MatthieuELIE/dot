@@ -1,3 +1,9 @@
+vim.pack.add({
+    { src = 'https://github.com/catppuccin/nvim' },
+    { src = 'https://github.com/nvim-mini/mini.icons' },
+    { src = 'https://github.com/akinsho/bufferline.nvim' },
+})
+
 require('bufferline').setup({
     options = {
         separator_style = 'thin',
