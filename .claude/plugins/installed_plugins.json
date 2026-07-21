@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "plugins": {
+    "ponytail@ponytail": [
+      {
+        "scope": "user",
+        "installPath": "/Users/matthieuelie/.claude/plugins/cache/ponytail/ponytail/4.8.4",
+        "version": "4.8.4",
+        "installedAt": "2026-07-05T13:38:50.487Z",
+        "lastUpdated": "2026-07-05T13:38:50.487Z",
+        "gitCommitSha": "40e50d9e03242aa5dd53ac771950f9127362b25f"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/matthieuelie/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-07-14T16:24:01.459Z",
+        "lastUpdated": "2026-07-14T16:24:01.459Z"
+      }
+    ],
+    "jdtls-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/matthieuelie/.claude/plugins/cache/claude-plugins-official/jdtls-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-07-15T16:23:27.648Z",
+        "lastUpdated": "2026-07-15T16:23:27.648Z"
+      }
+    ]
+  }
+}
