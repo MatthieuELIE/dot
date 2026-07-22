@@ -158,7 +158,8 @@
   "enabledPlugins": {
     "ponytail@ponytail": true,
     "typescript-lsp@claude-plugins-official": true,
-    "jdtls-lsp@claude-plugins-official": true
+    "jdtls-lsp@claude-plugins-official": true,
+    "obsidian@obsidian-skills": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
@@ -166,6 +167,12 @@
         "source": "github",
         "repo": "DietrichGebert/ponytail",
         "ref": "v4.8.4"
+      }
+    },
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
       }
     }
   },

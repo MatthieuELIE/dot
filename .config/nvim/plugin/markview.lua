@@ -30,3 +30,14 @@ require('render-markdown').setup({
         },
     },
 })
+
+-- Visual wrap only: VaultArchiveTodo (vault.nvim) needs each todo as one physical line.
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'markdown',
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.breakindent = true
+        vim.opt_local.textwidth = 0
+    end,
+})
