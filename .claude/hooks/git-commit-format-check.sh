@@ -25,19 +25,38 @@ extract_dash_m_messages() {
     done
 }
 
+# Heuristic against false positives when "git commit" appears inside a string
+# literal (e.g. `echo "...; git commit -m..."`): walks the prefix tracking
+# single- and double-quote state independently. Counting all quote chars in
+# one total (the previous approach) misfires as soon as an apostrophe sits
+# inside an earlier double-quoted string - e.g. `echo "don't" && git commit`
+# has 3 quote chars (odd), which the old parity check wrongly read as "still
+# inside a string" and let the real invocation through unchecked.
+in_open_quote() {
+    local s="$1" state=none i c
+    for (( i = 0; i < ${#s}; i++ )); do
+        c="${s:i:1}"
+        case "$state" in
+            none)
+                if [ "$c" = "'" ]; then state=single
+                elif [ "$c" = '"' ]; then state=double
+                fi
+                ;;
+            single) [ "$c" = "'" ] && state=none ;;
+            double) [ "$c" = '"' ] && state=none ;;
+        esac
+    done
+    [ "$state" != none ]
+}
+
 cmd=$(jq -r '.tool_input.command // empty')
 
 commit_regex='(^|[;&|]) *git commit\b'
 printf '%s' "$cmd" | grep -qE "${commit_regex}.*-m" || exit 0
 
-# Heuristic against false positives when "git commit" appears inside a string
-# literal (e.g. `echo "...; git commit -m..."`): if an odd number of quote
-# characters precede the match, we're still inside an open quote at that
-# point, so this isn't a real invocation - let it through unchecked.
 first_match=$(printf '%s' "$cmd" | grep -oE "$commit_regex" | head -1)
 prefix="${cmd%%"$first_match"*}"
-quote_count=$(printf '%s' "$prefix" | { grep -o "['\"]" || true; } | wc -l | tr -d ' ')
-[ $((quote_count % 2)) -eq 0 ] || exit 0
+in_open_quote "$prefix" && exit 0
 
 heredoc_re="(<<-?)[\"']?([A-Za-z_][A-Za-z0-9_]*)[\"']?"
 if [[ "$cmd" =~ $heredoc_re ]]; then
