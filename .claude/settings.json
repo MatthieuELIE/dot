@@ -7,21 +7,11 @@
           {
             "type": "command",
             "command": "bash '/Users/matthieuelie/.claude/hooks/pr-body-no-test-plan.sh'"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
+          },
           {
             "type": "command",
             "command": "bash '/Users/matthieuelie/.claude/hooks/git-commit-format-check.sh'"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
+          },
           {
             "type": "command",
             "command": "bash '/Users/matthieuelie/.claude/hooks/block-main-branch-commits.sh'"
