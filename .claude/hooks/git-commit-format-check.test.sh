@@ -32,6 +32,9 @@ run_case "double-quote inside single-quoted message" "allow" \
 run_case "apostrophe in a preceding command must not mask an invalid header" "deny" \
     'echo "don'"'"'t forget" && git commit -m "update stuff"'
 
+run_case "escaped double-quote in a preceding command must not mask an invalid header" "deny" \
+    'echo "say \"hi\" then" && git commit -m "update stuff"'
+
 run_case "multiple -m flags produce a body" "deny" \
     'git commit -m "fix(core): title here" -m "a real body line"'
 
