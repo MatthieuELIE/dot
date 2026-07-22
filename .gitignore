@@ -1,3 +1,4 @@
 .zshrc.d/env.zsh
 .config/tmux/plugins
 .planning/
+.claude/hooks/herdr-agent-state.sh
