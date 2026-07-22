@@ -43,7 +43,11 @@ in_open_quote() {
                 fi
                 ;;
             single) [ "$c" = "'" ] && state=none ;;
-            double) [ "$c" = '"' ] && state=none ;;
+            double)
+                if [ "$c" = '\' ]; then i=$((i + 1))
+                elif [ "$c" = '"' ]; then state=none
+                fi
+                ;;
         esac
     done
     [ "$state" != none ]
