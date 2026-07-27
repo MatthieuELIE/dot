@@ -102,9 +102,9 @@
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "vault.nvim": {
-      "rev": "ebc59d4128a943b4deaa7d5d2c04a49bb11c2e3f",
+      "rev": "241585658ec3e5432eaf36cdbc7ebd3bdd303817",
       "src": "https://github.com/MatthieuELIE/vault.nvim",
-      "version": "'v0.2.0'"
+      "version": "'v0.2.1'"
     }
   }
 }
