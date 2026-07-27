@@ -1,7 +1,4 @@
 .zshrc.d/env.zsh
 .config/tmux/plugins
-.planning/
+.artifacts/
 .claude/hooks/herdr-agent-state.sh
-
-# Code review reports
-REPORT.md
