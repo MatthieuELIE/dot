@@ -21,7 +21,7 @@ For each epic, produce a file `.planning/EPIC-<slug>.md` following the template 
 
 ### 2. Produce the global manifest
 
-Write/update `outputs/handoff-manifest.md`:
+Write/update `.planning/handoff-manifest.md`:
 
 ```
 | Story | Epic | Points | Status | Dependencies |

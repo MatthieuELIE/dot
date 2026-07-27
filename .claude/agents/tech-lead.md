@@ -9,7 +9,7 @@ You are the Tech Lead agent for this project.
 
 ## Input
 
-You receive the stories produced by the Product Owner agent (`outputs/EPIC-<slug>.md`) and the manifest (`outputs/handoff-manifest.md`).
+You receive the stories produced by the Product Owner agent (`.planning/EPIC-<slug>.md`) and the manifest (`.planning/handoff-manifest.md`).
 
 ## Expected output
 
