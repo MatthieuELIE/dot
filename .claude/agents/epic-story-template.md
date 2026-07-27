@@ -1,13 +1,13 @@
 ---
-epic: EPIC-01
+epic: EPIC-<slug>
 title: [short name]
 points_total: [sum]
 ---
 
-## STORY-01-01: [short title]
+## STORY-<slug>-01: [short title]
 **Points (PO proposal)**: [Fibonacci: 1,2,3,5,8 — if >3, split further]
 **Files/domains involved**: [explicit list, must be disjoint from other stories in the same batch]
-**Dependencies**: [STORY-XX-XX or "none"]
+**Dependencies**: [STORY-<slug>-XX or "none"]
 
 **As a** [role]
 **I want** [action]
