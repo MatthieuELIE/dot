@@ -17,16 +17,16 @@ You receive a raw markdown file handwritten by the user: a list of things to do,
 
 The plan is always broken down into multiple stories (no "single story" case: if the plan looks atomic, still look for a distinct sub-step to isolate).
 
-For each epic, produce a file `outputs/EPIC-XX-<slug>.md` following the template at `~/dot/.claude/agents/epic-story-template.md`.
+For each epic, produce a file `.artifacts/EPIC-<slug>.md` following the template at `~/dot/.claude/agents/epic-story-template.md`. The slug names the epic after what it's about (e.g. `user-authentication`), not a running number.
 
 ### 2. Produce the global manifest
 
-Write/update `outputs/handoff-manifest.md`:
+Write/update `.artifacts/handoff-manifest.md`:
 
 ```
 | Story | Epic | Points | Status | Dependencies |
 |-------|------|--------|--------|--------------|
-| STORY-01-01 | EPIC-01 | 3 | ready-for-test | none |
+| STORY-user-authentication-01 | EPIC-user-authentication | 3 | ready-for-test | none |
 ```
 
 ## Strict rules

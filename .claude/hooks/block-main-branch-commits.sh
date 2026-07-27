@@ -8,6 +8,6 @@ branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)" || exit 0
 
 [ "$branch" = "main" ] || [ "$branch" = "master" ] || exit 0
 
-printf '%s' "$command" | grep -Eq '(^|[;&|]|[[:space:]])git[[:space:]]+(commit|push)([[:space:]]|$)' || exit 0
+printf '%s' "$command" | grep -Eqi '(^|[;&|]|[[:space:]])git[[:space:]]+(commit|push)([[:space:]]|$)' || exit 0
 
 echo '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"Blocked: refusing git commit/push while on main. Create a branch first."}}'

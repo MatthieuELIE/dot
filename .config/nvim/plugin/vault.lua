@@ -1,7 +1,7 @@
 vim.pack.add({
     {
         src = 'https://github.com/MatthieuELIE/vault.nvim',
-        version = 'main',
+        version = 'v0.2.1',
     },
 })
 

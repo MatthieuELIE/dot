@@ -146,7 +146,7 @@ For each issue identified, provide:
 
 ## Output Format
 
-Generate a report file named `REPORT.md` in the workspace root with the following structure:
+Generate a report file named `.artifacts/REPORT.md` with the following structure:
 
 ### Report Structure
 
@@ -182,11 +182,10 @@ Each issue should include:
 
 ### After Generating Report
 
-1. **Save REPORT.md** to the workspace root
-2. **Update .gitignore**: Check if `REPORT.md` is already ignored. If not, add it:
+1. **Save `.artifacts/REPORT.md`**
+2. **Update .gitignore**: Check if `.artifacts/` is already ignored. If not, add it:
    ```
-   # Code review reports
-   REPORT.md
+   .artifacts/
    ```
 3. **Inform user**: Let them know the report has been created and where to find it
 
@@ -210,7 +209,7 @@ User: "Review src/api/payment-handler.ts"
 - Read the file
 - Check for tests
 - Analyze for issues
-- Generate REPORT.md
+- Generate .artifacts/REPORT.md
 
 ### Scenario 2: Review Current Changes
 
@@ -220,7 +219,7 @@ User: "Review my current changes"
 
 - Run git diff to find modified files
 - Analyze those files and their dependencies
-- Generate REPORT.md focused on the changes
+- Generate .artifacts/REPORT.md focused on the changes
 
 ### Scenario 3: Full Module Review
 
@@ -231,7 +230,7 @@ User: "Review the authentication module in src/auth/"
 - Read all files in src/auth/
 - Check for related tests
 - Review design docs if available
-- Generate comprehensive REPORT.md
+- Generate comprehensive .artifacts/REPORT.md
 
 ### Scenario 4: Review with Test Files
 
@@ -242,7 +241,7 @@ User: "Review src/checkout/cart.ts and check tests/checkout/cart.test.ts"
 - Review production code
 - Review test coverage against production code
 - Identify missing test cases
-- Generate REPORT.md
+- Generate .artifacts/REPORT.md
 
 ## Notes
 

@@ -14,12 +14,14 @@ set -euo pipefail
 # quoted with " can safely contain a ' (e.g. "fix: it's broken") and vice versa.
 extract_dash_m_messages() {
     local remaining="$1"
-    local re="-m[[:space:]]+(\"([^\"]*)\"|'([^']*)')"
+    local re="-m[[:space:]]+(\"([^\"]*)\"|'([^']*)'|([^[:space:]]+))"
     while [[ "$remaining" =~ $re ]]; do
         if [ "${BASH_REMATCH[1]:0:1}" = '"' ]; then
             printf '%s\n\n' "${BASH_REMATCH[2]}"
-        else
+        elif [ "${BASH_REMATCH[1]:0:1}" = "'" ]; then
             printf '%s\n\n' "${BASH_REMATCH[3]}"
+        else
+            printf '%s\n\n' "${BASH_REMATCH[4]}"
         fi
         remaining="${remaining#*"${BASH_REMATCH[0]}"}"
     done
@@ -56,9 +58,9 @@ in_open_quote() {
 cmd=$(jq -r '.tool_input.command // empty')
 
 commit_regex='(^|[;&|]) *git commit\b'
-printf '%s' "$cmd" | grep -qE "${commit_regex}.*-m" || exit 0
+printf '%s' "$cmd" | grep -qEi "${commit_regex}.*-m" || exit 0
 
-first_match=$(printf '%s' "$cmd" | grep -oE "$commit_regex" | head -1)
+first_match=$(printf '%s' "$cmd" | grep -oEi "$commit_regex" | head -1)
 prefix="${cmd%%"$first_match"*}"
 in_open_quote "$prefix" && exit 0
 

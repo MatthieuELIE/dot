@@ -2,7 +2,7 @@
 name: collaboration-mode
 description: >
   Collaborative planning workflow where the plan is written to a real
-  markdown file in the repo (.planning/<feature>.md) instead of native plan
+  markdown file in the repo (.artifacts/<feature>.md) instead of native plan
   mode, so it can be reviewed and annotated by hand (Neovim or another
   editor) before implementation starts. Triggered by the phrase "let's go
   collaborative mode" or the /collaboration command. Use for any non-trivial
@@ -19,10 +19,10 @@ annotated directly in an external editor.
 1. **Research, read-only.** Explore the necessary code (Read/Grep/Glob).
    No writing at this stage.
 
-2. **First draft of the plan.** Write it to `.planning/<feature-name>.md`
+2. **First draft of the plan.** Write it to `.artifacts/<feature-name>.md`
    at the root of the current project:
-   - Create `.planning/` if it doesn't exist.
-   - Add `.planning/` to the project's `.gitignore` if not already there.
+   - Create `.artifacts/` if it doesn't exist.
+   - Add `.artifacts/` to the project's `.gitignore` if not already there.
    - Required structure: `## Context`, `## Approach`, `## Files changed`,
      `## Steps`, `## Open questions`.
    - Language: match the rest of the project; default to French if
@@ -51,11 +51,11 @@ annotated directly in an external editor.
    this explicit confirmation, even if the plan looks complete.
 
 7. **Implement.** Once confirmed, implement according to the plan. Leave
-   `.planning/<feature-name>.md` in place afterward — don't delete it.
+   `.artifacts/<feature-name>.md` in place afterward — don't delete it.
 
 ## Constraints
 
 - Never edit the plan file while the user is reading/annotating it — only
   in explicit response to "continue" (step 4).
 - One planning task per file at a time; don't reuse an existing
-  `.planning/` file for a different feature.
+  `.artifacts/` file for a different feature.
