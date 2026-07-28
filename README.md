@@ -5,21 +5,20 @@ A collection of configuration files for macOS, focused on performance and aesthe
 ## Components
 
 ### [Neovim](.config/nvim)
+
 - **Editor**: Modern Neovim setup in Lua.
 - **Features**: LSP, Tree-sitter, Fuzzy Finding, and structured plugin management.
 - **Theme**: Catppuccin.
 
 ### [Ghostty](.config/ghostty)
+
 - **Terminal**: Fast, native renderer with a minimal configuration.
 - **Config**: Custom fonts and theme integration.
 
 ### [Wezterm](.config/wezterm)
+
 - **Terminal**: GPU-accelerated terminal emulator.
 - **Features**: Advanced keybindings and custom background image support.
-
-### [Claude Code](.claude)
-- **Hooks**: commit message format, PR body format, main-branch protection.
-- **Skills**: code-review, collaboration-mode, ship.
 
 ## Installation
 
@@ -40,14 +39,6 @@ ln -s ~/dot/.config/ghostty ~/.config/ghostty
 ln -s ~/dot/.config/wezterm ~/.config/wezterm
 ```
 
-`.claude` is managed with `stow` instead, since `~/.claude` also holds
-Claude Code's own runtime state (sessions, cache, history) that must stay
-local and never get symlinked in:
-
-```bash
-stow -d ~/dot -t ~/.claude .claude
-```
-
 If any target file already exists as a real file (not a symlink) with the
 same relative path, `stow` refuses and lists the conflicts - move those
 files aside before retrying.
@@ -56,10 +47,6 @@ files aside before retrying.
 
 ```text
 .
-├── .claude
-│   ├── hooks/      # Bash scripts driving PreToolUse/SessionStart hooks
-│   ├── skills/     # Slash-command skills
-│   └── settings.json
 ├── .config
 │   ├── ghostty/    # Terminal configuration
 │   ├── nvim/       # Neovim IDE-like setup
