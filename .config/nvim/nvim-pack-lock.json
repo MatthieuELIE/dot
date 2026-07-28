@@ -13,9 +13,9 @@
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
     },
     "comment.nvim": {
-      "rev": "2a438db326d5fa5abedc5d4ccce14a3bddbcbcfa",
+      "rev": "d3531053bf7ba853fdc58d6c1b19cf868843822f",
       "src": "https://github.com/MatthieuELIE/comment.nvim",
-      "version": "'v0.1.0'"
+      "version": "'v0.2.1'"
     },
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
