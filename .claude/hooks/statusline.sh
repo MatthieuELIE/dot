@@ -14,6 +14,7 @@ tokens=$(printf '%s' "$input" | jq -r '
     else ($u.input_tokens // 0) + ($u.output_tokens // 0) + ($u.cache_creation_input_tokens // 0) + ($u.cache_read_input_tokens // 0)
     end
 ')
+context_size=$(printf '%s' "$input" | jq -r '.context_window.context_window_size // 200000')
 
 line1="📁 Workspace: $(basename "$dir")"
 [ -n "$branch" ] && line1="$line1 | 🌿 Branch: $branch"
@@ -23,6 +24,8 @@ line1="$line1 | 🤖 Model: $model"
 duration_s=$(( duration_ms / 1000 ))
 duration_fmt="$(( duration_s / 60 ))m$(( duration_s % 60 ))s"
 
-line2=$(printf '🧮 Context Tokens: %s | 💰 Cost: $%.4f | ⏱️ Duration: %s' "$tokens" "$cost" "$duration_fmt")
+pct=$(( context_size > 0 ? tokens * 100 / context_size : 0 ))
+
+line2=$(printf '🧮 Context Tokens: %s (%s%%) | 💰 Cost: $%.4f | ⏱️ Duration: %s' "$tokens" "$pct" "$cost" "$duration_fmt")
 
 printf '%s\n%s\n' "$line1" "$line2"
