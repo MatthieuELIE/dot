@@ -20,11 +20,6 @@ A collection of configuration files for macOS, focused on performance and aesthe
 - **Terminal**: GPU-accelerated terminal emulator.
 - **Features**: Advanced keybindings and custom background image support.
 
-### [Claude Code](.claude)
-
-- **Hooks**: session/git guards, statusline, commit format checks.
-- **Agents & Skills**: custom subagents and skills.
-
 ## Installation
 
 ### Prerequisites
@@ -42,12 +37,6 @@ mkdir -p ~/.config
 ln -s ~/dot/.config/nvim ~/.config/nvim
 ln -s ~/dot/.config/ghostty ~/.config/ghostty
 ln -s ~/dot/.config/wezterm ~/.config/wezterm
-
-ln -s ~/dot/.claude/hooks ~/.claude/hooks
-ln -s ~/dot/.claude/agents ~/.claude/agents
-ln -s ~/dot/.claude/skills ~/.claude/skills
-ln -s ~/dot/.claude/settings.json ~/.claude/settings.json
-ln -s ~/dot/.claude/CLAUDE.md ~/.claude/CLAUDE.md
 ```
 
 If any target file already exists as a real file (not a symlink) with the
@@ -58,12 +47,6 @@ files aside before retrying.
 
 ```text
 .
-├── .claude
-│   ├── agents/       # Custom subagents
-│   ├── hooks/        # Session/git guards, statusline, commit checks
-│   ├── skills/       # Custom skills
-│   ├── CLAUDE.md     # Global user instructions
-│   └── settings.json
 ├── .config
 │   ├── ghostty/    # Terminal configuration
 │   ├── nvim/       # Neovim IDE-like setup
