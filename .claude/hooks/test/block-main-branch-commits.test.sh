@@ -61,6 +61,9 @@ run_case "git push on a feature branch" "allow" "feature/x" \
 run_case "git status on main" "allow" "main" \
     'git status'
 
+run_case "commit phrase mentioned inside an echo string on main" "allow" "main" \
+    'echo "reminder: git commit early and often"'
+
 echo
 echo "$pass passed, $fail failed"
 [ "$fail" -eq 0 ]

@@ -27,33 +27,38 @@ extract_dash_m_messages() {
     done
 }
 
-# Heuristic against false positives when "git commit" appears inside a string
-# literal (e.g. `echo "...; git commit -m..."`): walks the prefix tracking
-# single- and double-quote state independently. Counting all quote chars in
-# one total (the previous approach) misfires as soon as an apostrophe sits
-# inside an earlier double-quoted string - e.g. `echo "don't" && git commit`
-# has 3 quote chars (odd), which the old parity check wrongly read as "still
-# inside a string" and let the real invocation through unchecked.
-in_open_quote() {
-    local s="$1" state=none i c
+# Truncates $1 at the first top-level (unquoted) command separator (; & |),
+# so a chained command after the real `git commit` (e.g. `git commit -m "x"
+# && echo "-m mention"`) doesn't leak its own `-m` flags into the message.
+truncate_at_next_command() {
+    local s="$1" state=none i c out=""
     for (( i = 0; i < ${#s}; i++ )); do
         c="${s:i:1}"
         case "$state" in
             none)
-                if [ "$c" = "'" ]; then state=single
-                elif [ "$c" = '"' ]; then state=double
-                fi
+                case "$c" in
+                    "'") state=single ;;
+                    '"') state=double ;;
+                    ';'|'&'|'|') printf '%s' "$out"; return ;;
+                esac
                 ;;
             single) [ "$c" = "'" ] && state=none ;;
             double)
-                if [ "$c" = '\' ]; then i=$((i + 1))
-                elif [ "$c" = '"' ]; then state=none
+                if [ "$c" = '\' ]; then
+                    out+="$c${s:i+1:1}"
+                    i=$((i + 1))
+                    continue
+                elif [ "$c" = '"' ]; then
+                    state=none
                 fi
                 ;;
         esac
+        out+="$c"
     done
-    [ "$state" != none ]
+    printf '%s' "$out"
 }
+
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
 cmd=$(jq -r '.tool_input.command // empty')
 
@@ -64,21 +69,29 @@ first_match=$(printf '%s' "$cmd" | grep -oEi "$commit_regex" | head -1)
 prefix="${cmd%%"$first_match"*}"
 in_open_quote "$prefix" && exit 0
 
+# Everything from here on parses only the real invocation, not the whole
+# command - an unrelated `-m <word>` elsewhere in a chained command (e.g.
+# `echo "with -m flag" && git commit ...`) must not pollute message extraction.
+# $first_match includes the leading separator/anchor (^ or one of ;&|) that
+# introduced this invocation, so strip it back off before scanning forward.
+commit_start="${cmd#"$prefix"}"
+commit_start="$(printf '%s' "$commit_start" | sed -E 's/^[;&|]?[[:space:]]*//')"
+
 heredoc_re="(<<-?)[\"']?([A-Za-z_][A-Za-z0-9_]*)[\"']?"
-if [[ "$cmd" =~ $heredoc_re ]]; then
+if [[ "$commit_start" =~ $heredoc_re ]]; then
     operator="${BASH_REMATCH[1]}"
     delimiter="${BASH_REMATCH[2]}"
-    start_line=$(printf '%s\n' "$cmd" | grep -nE -- "${operator}[\"']?${delimiter}[\"']?" | head -1 | cut -d: -f1)
+    start_line=$(printf '%s\n' "$commit_start" | grep -nE -- "${operator}[\"']?${delimiter}[\"']?" | head -1 | cut -d: -f1)
     if [ "$operator" = "<<-" ]; then
         # <<- strips leading tabs from both the end delimiter and every content line.
         end_pattern="^[[:space:]]*${delimiter}[[:space:]]*$"
-        full_message=$(printf '%s\n' "$cmd" | tail -n +"$((start_line + 1))" | sed -n "/${end_pattern}/q;p" | sed 's/^\t*//')
+        full_message=$(printf '%s\n' "$commit_start" | tail -n +"$((start_line + 1))" | sed -n "/${end_pattern}/q;p" | sed 's/^\t*//')
     else
         end_pattern="^${delimiter}[[:space:]]*$"
-        full_message=$(printf '%s\n' "$cmd" | tail -n +"$((start_line + 1))" | sed -n "/${end_pattern}/q;p")
+        full_message=$(printf '%s\n' "$commit_start" | tail -n +"$((start_line + 1))" | sed -n "/${end_pattern}/q;p")
     fi
 else
-    full_message=$(extract_dash_m_messages "$cmd")
+    full_message=$(extract_dash_m_messages "$(truncate_at_next_command "$commit_start")")
 fi
 
 [ -z "$full_message" ] && exit 0

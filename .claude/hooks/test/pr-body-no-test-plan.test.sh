@@ -55,6 +55,9 @@ run_case "gh pr edit is not gh pr create" "allow" \
 run_case "unrelated command" "allow" \
     'ls -la'
 
+run_case "gh pr create phrase mentioned inside an echo string" "allow" \
+    'echo "example: gh pr create --body \"## Test plan\""'
+
 echo
 echo "$pass passed, $fail failed"
 [ "$fail" -eq 0 ]
