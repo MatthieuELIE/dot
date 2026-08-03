@@ -2,8 +2,7 @@
 # Test suite for git-commit-format-check.sh. Run directly: ./git-commit-format-check.test.sh
 set -uo pipefail
 
-hook_dir="$(cd "$(dirname "$0")" && pwd)"
-hook="$hook_dir/git-commit-format-check.sh"
+hook="$HOME/.claude/hooks/git-commit-format-check.sh"
 pass=0
 fail=0
 

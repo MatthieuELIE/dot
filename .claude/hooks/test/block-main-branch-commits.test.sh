@@ -8,8 +8,7 @@
 # branch it needs to exercise.
 set -uo pipefail
 
-hook_dir="$(cd "$(dirname "$0")" && pwd)"
-hook="$hook_dir/block-main-branch-commits.sh"
+hook="$HOME/.claude/hooks/block-main-branch-commits.sh"
 pass=0
 fail=0
 

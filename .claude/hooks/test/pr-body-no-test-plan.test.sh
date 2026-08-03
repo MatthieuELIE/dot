@@ -2,8 +2,7 @@
 # Test suite for pr-body-no-test-plan.sh. Run directly: ./pr-body-no-test-plan.test.sh
 set -uo pipefail
 
-hook_dir="$(cd "$(dirname "$0")" && pwd)"
-hook="$hook_dir/pr-body-no-test-plan.sh"
+hook="$HOME/.claude/hooks/pr-body-no-test-plan.sh"
 pass=0
 fail=0
 
