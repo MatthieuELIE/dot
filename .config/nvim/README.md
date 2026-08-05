@@ -5,16 +5,14 @@ A concise and performance-oriented Neovim configuration.
 ## Prerequisites
 
 ```bash
-brew install ripgrep fd lua-language-server rust-analyzer stylua
-```
-
-```bash
-npm install -g typescript typescript-language-server @vue/language-server vscode-langservers-extracted
+brew install ripgrep fd stylua
 ```
 
 ```bash
 rustup component add rustfmt
 ```
+
+LSP servers: see [LSP.md](./LSP.md) for install and update commands.
 
 ## Plugins
 

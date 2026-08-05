@@ -1,4 +1,5 @@
-.zshrc.d/env.zsh
-.config/tmux/plugins
 .artifacts/
 .claude/hooks/herdr-agent-state.sh
+.config/tmux/plugins
+.tokensave/
+.zshrc.d/env.zsh
